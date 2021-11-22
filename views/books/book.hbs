@@ -3,8 +3,8 @@
 <img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
 
 <ul>
-    {{#each bookInfo}}
-        <li>{{this.volumeInfo.authors}}</li>
+    {{#each volumeInfo.authors}}
+        <li>{{this}}</li>
     {{/each}}
 </ul>
 
