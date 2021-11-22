@@ -9,3 +9,31 @@
 </ul>
 
 <p>{{{volumeInfo.description}}}</p>
+
+
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{id}}">
+        Review
+</button>
+
+ <!-- Modal -->
+<div class="modal fade black" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Review "{{volumeInfo.title}}"</h5>
+        </div>
+        <div class="modal-body">
+            <form id="myForm1" method="POST" action="/review/{{id}}">
+                <label>Review</label>
+                <input type="text" name="Review" />
+                <label>Rate</label>
+                <input type="number" name="Rating" />
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button form="myForm1" type="submit" class="btn btn-primary">Submit review</button>          
+        </div>
+        </div>
+    </div>
+</div>
