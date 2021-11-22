@@ -6,11 +6,15 @@ const bookSchema = new Schema({
     unique: true,
     required: true
   },
-  description: {
-    type: String,
+  author: {
+    type: [String],
     required: true
   },
   cover: {
+    type: String,
+    required: true
+  },
+  idApi: {
     type: String,
     required: true
   },

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema({
-  author: {
+const reviewSchema = new Schema({
+  owner: {
     type: String,
     required: true
   },
@@ -13,8 +13,12 @@ const userSchema = new Schema({
     type: Number,
     required: true
   },
+  idBook: {
+    type: String,
+    required: true
+  }
 });
 
-const User = model("User", userSchema);
+const Review = model("Review", reviewSchema);
 
-module.exports = User;
+module.exports = Review;

@@ -23,11 +23,11 @@
             <h5 class="modal-title" id="exampleModalLabel">Review "{{volumeInfo.title}}"</h5>
         </div>
         <div class="modal-body">
-            <form id="myForm1" method="POST" action="review">
+            <form id="myForm1" method="POST" action="review/{{id}}">
                 <label>Review</label>
-                <input type="text" name="Review" />
+                <input type="text" name="review" />
                 <label>Rate</label>
-                <input type="number" name="Rating" />
+                <input type="number" name="rating" />
             </form>
         </div>
         <div class="modal-footer">
