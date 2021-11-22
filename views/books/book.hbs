@@ -1,29 +1,42 @@
-<h2>{{volumeInfo.title}}</h2>
+<h2>{{bookInfo.volumeInfo.title}}</h2>
 
-<img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+<img class="card-img-top" src="{{bookInfo.volumeInfo.imageLinks.thumbnail}}" alt="{{bookInfo.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
 
 <ul>
-    {{#each volumeInfo.authors}}
+    {{#each bookInfo.volumeInfo.authors}}
         <li>{{this}}</li>
     {{/each}}
 </ul>
 
-<p>{{{volumeInfo.description}}}</p>
+<p>{{{bookInfo.volumeInfo.description}}}</p>
 
 
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{id}}">
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{bookInfo.id}}">
         Review
 </button>
 
+<ul>
+    {{#each bookInDB.reviews}}
+        <li>    
+            {{this.owner}}
+            <ul>
+                <li>{{this.comment}} Rating: {{this.rating}}</li>
+            </ul>
+        </li>
+    {{/each}}
+</ul>
+
+
+
  <!-- Modal -->
-<div class="modal fade black" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade black" id="{{bookInfo.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Review "{{volumeInfo.title}}"</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Review "{{bookInfo.volumeInfo.title}}"</h5>
         </div>
         <div class="modal-body">
-            <form id="myForm1" method="POST" action="review/{{id}}">
+            <form id="myForm1" method="POST" action="review/{{bookInfo.id}}">
                 <label>Review</label>
                 <input type="text" name="review" />
                 <label>Rate</label>

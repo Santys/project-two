@@ -22,7 +22,7 @@ const bookSchema = new Schema({
     type: Number,
     default: 0
   },
-  reviews: [{type: Schema.Types.ObjectId, ref: 'Reviews'}]
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}]
 });
 
 const Book = model("Book", bookSchema);

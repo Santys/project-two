@@ -14,7 +14,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  reviews: [{type: Schema.Types.ObjectId, ref: 'Reviews'}]
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}]
 });
 
 const User = model("User", userSchema);

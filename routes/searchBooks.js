@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const axios = require('axios');
 
+// Import model
+const Book = require("../models/Book.model")
+
 /* GET home page */
 router.get("/search", async (req, res, next) => {
     console.log(req.query)
@@ -22,8 +25,11 @@ router.get("/:id", async (req, res, next) => {
       `https://www.googleapis.com/books/v1/volumes/${req.params.id}`
     );
     const bookInfo = axiosCall.data; 
-    // console.log(bookInfo)
-    res.render("books/book.hbs", bookInfo);
+    // Check if book has reviews
+    const bookInDB = await Book.findOne({ idApi: bookInfo.id }).populate('reviews')
+    // if(bookInDB) bookInDB.populate('reviews')
+    // console.log(bookInDB)
+    res.render("books/book.hbs", {bookInfo, bookInDB});
   } catch (err) {
     console.log(err);
   }
