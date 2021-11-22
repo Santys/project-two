@@ -1,0 +1,11 @@
+<h2>{{volumeInfo.title}}</h2>
+
+<img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}"/>
+
+<ul>
+    {{#each bookInfo}}
+        <li>{{this.volumeInfo.authors}}</li>
+    {{/each}}
+</ul>
+
+<p>{{{volumeInfo.description}}}</p>

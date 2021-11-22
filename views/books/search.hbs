@@ -1,5 +1,22 @@
-<ul>
+<form action="/books/search" method="GET">
+        <input type="text" name="title" id="title"/>
+        <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
+</form>
+<div class="row">
     {{#each booksInfo}}
-        <li>{{this.volumeInfo.title}}</li>
+        <div class="col-md-2 h-25">
+            <div class="card">
+                <img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}"/>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{this.volumeInfo.title}}
+                    </h5>
+                    <p>{{this.volumeInfo.authors.[0]}}</p>
+                    <a class="btn btn-success active text-light" href="/books/{{this.id}}">
+                        View book
+                    </a>
+                </div>
+            </div>
+        </div>
     {{/each}}
-</ul>
+</div>
