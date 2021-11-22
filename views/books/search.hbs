@@ -6,7 +6,7 @@
     {{#each booksInfo}}
         <div class="col-md-2 h-25">
             <div class="card">
-                <img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}"/>
+                <img class="card-img-top" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
                 <div class="card-body">
                     <h5 class="card-title">
                         {{this.volumeInfo.title}}
