@@ -6,11 +6,12 @@ const Book = require("../models/Book.model")
 /* GET home page */
 router.get("/", async (req, res, next) => {
   try{
+    const user = req.session.loggedUser
     const bestBooks = await Book.find()
     .sort({rating: -1})
     .limit(10)
 
-    res.render("index", { bestBooks });
+    res.render("index", { bestBooks, user });
   } catch(err){
 
   }
