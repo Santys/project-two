@@ -9,15 +9,10 @@ const Review = require("../models/Review.model")
 
 /* POST create */
 router.post("/review/:id", async (req, res, next) => {
-    console.log(req.body)
-    console.log(req.params.id)
     const { review, rating } = req.body;
     const idUser = req.session.loggedUser._id
     const username = req.session.loggedUser.username
     const idBook = req.params.id
-    console.log(username)
-
-
     try {
         //Check if book exist, if not, create it
         let bookTargeted = await Book.findOne({ idApi: idBook })
@@ -40,19 +35,11 @@ router.post("/review/:id", async (req, res, next) => {
         const updatedBook = await Book.findByIdAndUpdate( bookTargeted._id , {$push: {reviews: newReview._id}}, { new: true })
         // Calculate rating => newRating = oldRating + (nrating - oldRating)/reviews
         const newRating = updatedBook.rating + ((rating - updatedBook.rating)/ updatedBook.reviews.length)
-        console.log("updatedBook.rating ", updatedBook.rating)
-        console.log("rating ", rating)
-        console.log("length", updatedBook.reviews.length)
-        console.log("newRating ", newRating)
         const updatedRateBook = await Book.findByIdAndUpdate( updatedBook._id , {rating: newRating}, { new: true })
         res.redirect(`/books/${idBook}`)
     } catch (err) {
         console.log(err);
     }
-    // try{
-    // } catch (err) {
-    //     console.log(err);
-    // }
 });
 
 /* POST edit */
