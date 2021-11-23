@@ -14,6 +14,14 @@ router.get("/login", (req, res, next) => {
   res.render("users/login.hbs");
 });
 
+/* GET profile */
+router.get("/profile", async (req, res, next) => {
+  const idUser = req.session.loggedUser._id
+  const currentUser = await User.findById(idUser).populate('reviews')
+  console.log(currentUser)
+  res.render("users/profile.hbs", currentUser);
+});
+
 /* POST sign up */
 router.post("/signup", async (req, res, next) => {
   const {username, password} = req.body;

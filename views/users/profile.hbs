@@ -1,0 +1,10 @@
+<span>Welcome to your profile {{username}}!</span>
+
+<p>Your reviews</p>
+
+{{#each reviews}}
+    <div>
+        <p>{{this.comment}}</p> 
+        <p>Your rate: {{this.rating}}</p>       
+    </div>
+{{/each}}
