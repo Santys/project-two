@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require('bcryptjs');
+const {isLoggedIn} = require("../middleware/route-guard")
 
 // Model
 const User = require("../models/User.model")
@@ -15,7 +16,7 @@ router.get("/login", (req, res, next) => {
 });
 
 /* GET profile */
-router.get("/profile", async (req, res, next) => {
+router.get("/profile", isLoggedIn, async (req, res, next) => {
   const idUser = req.session.loggedUser._id
   try{
     const currentUser = await User.findById(idUser).populate({

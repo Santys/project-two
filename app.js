@@ -27,6 +27,12 @@ const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerC
 
 app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
+// HBS helpers
+hbs.registerHelper('isReviewed', function(id, array, options) {
+    const stringsArray = array.map(x => x.toString());
+    return stringsArray.includes(id) ? options.fn(this) : options.inverse(this);
+})
+
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);

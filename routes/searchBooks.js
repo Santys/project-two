@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const axios = require('axios');
+const {isLoggedIn} = require("../middleware/route-guard")
 
 // Import model
 const Book = require("../models/Book.model")
 
 /* GET home page */
-router.get("/search", async (req, res, next) => {
+router.get("/search", isLoggedIn,  async (req, res, next) => {
     console.log(req.query)
     try {
         const axiosCall = await axios(
@@ -19,7 +20,7 @@ router.get("/search", async (req, res, next) => {
     }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", isLoggedIn, async (req, res, next) => {
   try {
     const axiosCall = await axios(
       `https://www.googleapis.com/books/v1/volumes/${req.params.id}`

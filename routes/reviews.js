@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const axios = require('axios');
+const {isLoggedIn} = require("../middleware/route-guard")
+
 
 // Model
 const User = require("../models/User.model")
@@ -8,7 +10,7 @@ const Review = require("../models/Review.model")
 
 
 /* POST create */
-router.post("/review/:id", async (req, res, next) => {
+router.post("/review/:id", isLoggedIn, async (req, res, next) => {
     const { review, rating } = req.body;
     const idUser = req.session.loggedUser._id
     const username = req.session.loggedUser.username
@@ -43,7 +45,7 @@ router.post("/review/:id", async (req, res, next) => {
 });
 
 /* POST edit */
-router.post("/review/edit/:id", async (req, res, next) => {
+router.post("/review/edit/:id", isLoggedIn, async (req, res, next) => {
     console.log(req.body)
     console.log(req.params.id)
     const idReview = req.params.id
@@ -63,8 +65,5 @@ router.post("/review/edit/:id", async (req, res, next) => {
     }
 
 });
-
-        // const updatedReview = await Review.findByIdAndUpdate( newReview._id , {$push: {idBook: bookTargeted._id}}, { new: true })
-
 
 module.exports = router;
