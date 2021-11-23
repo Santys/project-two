@@ -11,5 +11,30 @@
             <p>{{this.comment}}</p> 
             <p>Your rate: {{this.rating}}</p>       
         </div>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{this._id}}">
+            Edit Review
+        </button>
+         <!-- Modal -->
+        <div class="modal fade black" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Review "{{this.idBook.title}}"</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="myForm1" method="POST" action="review/{{this._id}}/edit">
+                        <label>Review</label>
+                        <input type="text" name="review" value="{{this.comment}}"/>
+                        <label>Rate</label>
+                        <input type="number" name="rating" value="{{this.rating}}"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button form="myForm1" type="submit" class="btn btn-primary">Edit review</button>          
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 {{/each}}
