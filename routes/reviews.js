@@ -7,7 +7,7 @@ const Book = require("../models/Book.model")
 const Review = require("../models/Review.model")
 
 
-/* GET home page */
+/* POST create */
 router.post("/review/:id", async (req, res, next) => {
     console.log(req.body)
     console.log(req.params.id)
@@ -36,14 +36,39 @@ router.post("/review/:id", async (req, res, next) => {
         }
         // Create review
         const newReview = await Review.create({owner: username, comment: review, rating, idBook: bookTargeted._id})
-        // const updatedReview = await Review.findByIdAndUpdate( newReview._id , {$push: {idBook: bookTargeted._id}}, { new: true })
         const updatedUser = await User.findByIdAndUpdate( idUser , {$push: {reviews: newReview._id}}, { new: true })
         const updatedBook = await Book.findByIdAndUpdate( bookTargeted._id , {$push: {reviews: newReview._id}}, { new: true })
+        // Calculate rating => newRating = oldRating + (nrating - oldRating)/reviews
+        const newRating = updatedBook.rating + ((rating - updatedBook.rating)/ updatedBook.reviews.length)
+        console.log("updatedBook.rating ", updatedBook.rating)
+        console.log("rating ", rating)
+        console.log("length", updatedBook.reviews.length)
+        console.log("newRating ", newRating)
+        const updatedRateBook = await Book.findByIdAndUpdate( updatedBook._id , {rating: newRating}, { new: true })
         res.redirect(`/books/${idBook}`)
     } catch (err) {
         console.log(err);
     }
+    // try{
+    // } catch (err) {
+    //     console.log(err);
+    // }
 });
+
+/* POST edit */
+router.post("/review/:id/edit", async (req, res, next) => {
+    console.log(req.body)
+    console.log(req.params.id)
+    // const { review, rating } = req.body;
+    // const idUser = req.session.loggedUser._id
+    // const username = req.session.loggedUser.username
+    // const idReview = req.params.id
+    // console.log(username)
+
+
+});
+
+        // const updatedReview = await Review.findByIdAndUpdate( newReview._id , {$push: {idBook: bookTargeted._id}}, { new: true })
 
 
 module.exports = router;
