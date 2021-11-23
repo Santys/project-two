@@ -22,7 +22,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Review "{{this.idBook.title}}"</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="myForm1" method="POST" action="review/{{this._id}}/edit">
+                    <form id="form{{this._id}}" method="POST" action="/books/review/edit/{{this._id}}">
                         <label>Review</label>
                         <input type="text" name="review" value="{{this.comment}}"/>
                         <label>Rate</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button form="myForm1" type="submit" class="btn btn-primary">Edit review</button>          
+                    <button form="form{{this._id}}" type="submit" class="btn btn-primary">Edit review</button>          
                 </div>
                 </div>
             </div>

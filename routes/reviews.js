@@ -43,15 +43,24 @@ router.post("/review/:id", async (req, res, next) => {
 });
 
 /* POST edit */
-router.post("/review/:id/edit", async (req, res, next) => {
+router.post("/review/edit/:id", async (req, res, next) => {
     console.log(req.body)
     console.log(req.params.id)
-    // const { review, rating } = req.body;
+    const idReview = req.params.id
+    const { review, rating } = req.body;
     // const idUser = req.session.loggedUser._id
     // const username = req.session.loggedUser.username
     // const idReview = req.params.id
     // console.log(username)
-
+    try {
+        const updatedReview = await Review.findByIdAndUpdate( idReview , {comment: review, rating}, { new: true })
+        let bookTargeted = await Book.findById( updatedReview.idBook )
+        const newRating = bookTargeted.rating + ((rating - bookTargeted.rating)/ bookTargeted.reviews.length)
+        const updatedRateBook = await Book.findByIdAndUpdate( updatedReview.idBook , {rating: newRating}, { new: true })
+        res.redirect('/profile')
+    } catch(err){
+        console.log(err)
+    }
 
 });
 
