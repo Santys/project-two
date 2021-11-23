@@ -10,3 +10,23 @@
         <input type="text" name="title" id="title"/>
         <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
 </form>
+
+<div class="row">
+    {{#each bestBooks}}
+        <div class="col-md-2 h-25">
+            <div class="card">
+                <img class="card-img-top" src="{{this.cover}}" alt="{{this.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{this.title}}
+                    </h5>
+                    <p>{{this.authors.[0]}}</p>
+                    <p>Rating: {{this.rating}}</p>
+                    <a class="btn btn-success active text-light" href="/books/{{this.idApi}}">
+                        View book
+                    </a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
