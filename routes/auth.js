@@ -17,9 +17,17 @@ router.get("/login", (req, res, next) => {
 /* GET profile */
 router.get("/profile", async (req, res, next) => {
   const idUser = req.session.loggedUser._id
-  const currentUser = await User.findById(idUser).populate('reviews')
-  console.log(currentUser)
-  res.render("users/profile.hbs", currentUser);
+  try{
+    const currentUser = await User.findById(idUser).populate({
+      path: 'reviews',
+      populate:{
+        path: 'idBook'
+      } 
+    })
+    res.render("users/profile.hbs", currentUser);
+  } catch(err) {
+    console.log(err)
+  }
 });
 
 /* POST sign up */

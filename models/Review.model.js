@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
     type: Number,
     required: true
   },
-  idBook: [{type: Schema.Types.ObjectId, ref: 'Book'}]
+  idBook: {type: Schema.Types.ObjectId, ref: 'Book'}
 });
 
 const Review = model("Review", reviewSchema);

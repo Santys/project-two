@@ -35,8 +35,8 @@ router.post("/review/:id", async (req, res, next) => {
             })
         }
         // Create review
-        const newReview = await Review.create({owner: username, comment: review, rating})
-        const updatedReview = await Review.findByIdAndUpdate( newReview._id , {$push: {idBook: bookTargeted._id}}, { new: true })
+        const newReview = await Review.create({owner: username, comment: review, rating, idBook: bookTargeted._id})
+        // const updatedReview = await Review.findByIdAndUpdate( newReview._id , {$push: {idBook: bookTargeted._id}}, { new: true })
         const updatedUser = await User.findByIdAndUpdate( idUser , {$push: {reviews: newReview._id}}, { new: true })
         const updatedBook = await Book.findByIdAndUpdate( bookTargeted._id , {$push: {reviews: newReview._id}}, { new: true })
         res.redirect(`/books/${idBook}`)

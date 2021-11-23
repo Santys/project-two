@@ -4,7 +4,12 @@
 
 {{#each reviews}}
     <div>
-        <p>{{this.comment}}</p> 
-        <p>Your rate: {{this.rating}}</p>       
+        <img class="card-img-top" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+        <h3>{{this.idBook.title}}</h3>
+        <h4>{{this.idBook.author.[0]}}</h4>
+        <div>
+            <p>{{this.comment}}</p> 
+            <p>Your rate: {{this.rating}}</p>       
+        </div>
     </div>
 {{/each}}
