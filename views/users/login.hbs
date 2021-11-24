@@ -1,14 +1,18 @@
-<h2>Log In!</h2>
+<p class="h2">Log In!<p>
 
 
 <form action="/login" method="POST">
-    <label>Username:</label>
-    <input type="text" name="username" required/>
-    
-    <label>Password:</label>
-    <input type="password" name="password" required/>
+    <div class="form-group row">
+        <div class="col-4">
+            <p class="h4"><label>Username:</label></p>
+            <input class="form-control" type="text" name="username" required/>
+            
+            <p class="h4"><label>Password:</label></p>
+            <input class="form-control" type="password" name="password" required/>
 
-    <button type="submit">Log In</button>
+            <button class="btn btn-success active text-light" type="submit">Log In</button>
+        </div>
+    </div>
 </form>
 
 {{#if msg}}

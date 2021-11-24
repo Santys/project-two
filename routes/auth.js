@@ -75,8 +75,8 @@ router.post("/login", async (req, res, next) => {
       } else {
         req.session.loggedUser = userFromDB
         console.log('Session =======>  ', req.session)
-        res.render("users/login.hbs", {msg: "Log in correct!"})
-        // res.redirect(`/users/profile`)
+        // res.render("users/login.hbs", {msg: "Log in correct!"})
+        res.redirect(`/`)
       }
     }
   } catch (err){

@@ -38,9 +38,9 @@
                             <div class="modal-body">
                                 <form id="form{{this._id}}" method="POST" action="/books/review/edit/{{this._id}}">
                                     <label>Review</label>
-                                    <input type="text" name="review" value="{{this.comment}}"/>
+                                    <input class="form-control" type="text" name="review" value="{{this.comment}}"/>
                                     <label>Rate</label>
-                                    <input type="number" name="rating" value="{{this.rating}}"/>
+                                    <input class="form-control" type="number" name="rating" value="{{this.rating}}"/>
                                 </form>
                             </div>
                             <div class="modal-footer">

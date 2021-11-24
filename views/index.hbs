@@ -1,12 +1,15 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{!-- <h1>{{title}}</h1>
+<p>Welcome to {{title}}</p> --}}
 
 <div class="input-field">
     <form action="/books/search" method="GET">
-            <input type="text" name="title" id="title"/>
-            <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
+        <div class="form-group row">
+            <div class="col-10">
+                <input class="form-control form-control" type="text" name="title" id="title"/>
+            </div>
+            <button id="search-button" class="btn btn-success col-2" type="submit">SEARCH</button>
+        </div>
     </form>
-
 </div>
 
 <div class="row">
