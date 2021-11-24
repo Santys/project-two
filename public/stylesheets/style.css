@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,9 +7,34 @@ a {
   color: #00B7FF;
 }
 
+.navbar{
+  padding-left: 10vw;
+  margin-bottom: 1vh;
+}
+.card{
+  padding: 1vw;
+}
+
+.book-container{
+  height: 470px;
+  margin-top: 1vh;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-body{
+  display: flex;
+  justify-content: center;
+}
 .card-img-top{
   height: 200px;
   width:130px;
   /* object-fit: cover;
   object-fit: left; */
 }
+
+
+

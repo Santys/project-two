@@ -1,17 +1,22 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+<div class="input-field">
+    <form action="/books/search" method="GET">
+            <input type="text" name="title" id="title"/>
+            <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
+    </form>
 
-<form action="/books/search" method="GET">
-        <input type="text" name="title" id="title"/>
-        <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
-</form>
+</div>
 
 <div class="row">
     {{#each bestBooks}}
-        <div class="col-md-2 h-25">
-            <div class="card">
+        <div class="col-md-3 ">
+            <div class="card book-container">
+                <div class="card-body img-body">
+                    
                 <img class="card-img-top" src="{{this.cover}}" alt="{{this.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">
                         {{this.title}}

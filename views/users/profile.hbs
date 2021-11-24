@@ -3,7 +3,58 @@
 <p>Your reviews</p>
 
 {{#each reviews}}
-    <div>
+    <div class="col-md-12 ">
+            <div class="card review-container">
+                <div class="card-body img-body">
+                    <img class="card-img-top" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{this.idBook.title}}
+                    </h5>
+                    <p>{{this.idBook.author.[0]}}</p>
+                    <div>
+                        <p>{{this.comment}}</p> 
+                        <p>Your rate: {{this.rating}}</p>       
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-success active text-light" href="/books/{{this.idBook.idApi}}">
+                        View book
+                    </a>
+                    <form action="/books/review/delete/{{this._id}}" method="POST">
+                        <button type="submit">Delete Review</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{this._id}}">
+                        Edit Review
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade black" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Review "{{this.idBook.title}}"</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form id="form{{this._id}}" method="POST" action="/books/review/edit/{{this._id}}">
+                                    <label>Review</label>
+                                    <input type="text" name="review" value="{{this.comment}}"/>
+                                    <label>Rate</label>
+                                    <input type="number" name="rating" value="{{this.rating}}"/>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button form="form{{this._id}}" type="submit" class="btn btn-primary">Edit review</button>          
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {{!-- <div>
         <img class="card-img-top" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
         <h3>{{this.idBook.title}}</h3>
         <h4>{{this.idBook.author.[0]}}</h4>
@@ -11,33 +62,5 @@
             <p>{{this.comment}}</p> 
             <p>Your rate: {{this.rating}}</p>       
         </div>
-        <form action="/books/review/delete/{{this._id}}" method="POST">
-            <button type="submit">Delete Review</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{this._id}}">
-            Edit Review
-        </button>
-         <!-- Modal -->
-        <div class="modal fade black" id="{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Review "{{this.idBook.title}}"</h5>
-                </div>
-                <div class="modal-body">
-                    <form id="form{{this._id}}" method="POST" action="/books/review/edit/{{this._id}}">
-                        <label>Review</label>
-                        <input type="text" name="review" value="{{this.comment}}"/>
-                        <label>Rate</label>
-                        <input type="number" name="rating" value="{{this.rating}}"/>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button form="form{{this._id}}" type="submit" class="btn btn-primary">Edit review</button>          
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> --}}
 {{/each}}
