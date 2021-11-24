@@ -33,6 +33,14 @@ hbs.registerHelper('isReviewed', function(id, array, options) {
     return stringsArray.includes(id) ? options.fn(this) : options.inverse(this);
 })
 
+//Middleware for user session
+app.use((req, res, next) => {
+    if (req.session.loggedUser) {
+        res.locals.session = req.session
+    }
+    next()
+});
+
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
