@@ -66,4 +66,24 @@ router.post("/review/edit/:id", isLoggedIn, async (req, res, next) => {
 
 });
 
+/* POST delete */
+router.post("/review/delete/:id", isLoggedIn, async (req, res, next) => {
+    console.log(req.body)
+    console.log(req.params.id)
+    const idReview = req.params.id
+    try {
+        const username = req.session.loggedUser.username
+        const review = await Review.findById(idReview)
+        if(username != review.owner){
+            res.redirect("/profile")
+            return
+        }
+        const deletedReview = await Review.findByIdAndRemove(idReview);
+        res.redirect("/profile")
+    } catch(err) {
+        res.render("not-found.hbs", { errorMsg: "Review not deleted" });
+    }
+
+});
+
 module.exports = router;

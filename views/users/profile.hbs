@@ -11,6 +11,9 @@
             <p>{{this.comment}}</p> 
             <p>Your rate: {{this.rating}}</p>       
         </div>
+        <form action="/books/review/delete/{{this._id}}" method="POST">
+            <button type="submit">Delete Review</button>
+        </form>
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{this._id}}">
             Edit Review
         </button>
