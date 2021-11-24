@@ -1,8 +1,9 @@
 <form action="/books/search" method="GET">
-        <input type="text" name="title" id="title"/>
+        <input type="text" name="title" id="title" value="{{search}}"/>
         <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
 </form>
 <div class="row">
+    <p>Results for "{{search}}"</p>
     {{#each booksInfo}}
         <div class="col-md-2 h-25">
             <div class="card">

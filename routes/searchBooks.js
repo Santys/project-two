@@ -8,13 +8,15 @@ const Book = require("../models/Book.model")
 /* GET home page */
 router.get("/search", isLoggedIn,  async (req, res, next) => {
     console.log(req.query)
+    console.log(res.locals)
+    const search = req.query.title
     try {
         const axiosCall = await axios(
-          `https://www.googleapis.com/books/v1/volumes?q=${req.query.title}&maxResults=12`
+          `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=12`
         );
         const booksInfo = axiosCall.data.items; 
         // console.log(booksInfo)
-        res.render("books/search.hbs", {booksInfo});
+        res.render("books/search.hbs", {search, booksInfo});
       } catch (err) {
         console.log(err);
     }
