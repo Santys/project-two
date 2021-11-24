@@ -68,8 +68,7 @@ router.post("/review/edit/:id", isLoggedIn, async (req, res, next) => {
 
 /* POST delete */
 router.post("/review/delete/:id", isLoggedIn, async (req, res, next) => {
-    console.log(req.body)
-    console.log(req.params.id)
+    // console.log(req.params.id)
     const idReview = req.params.id
     try {
         const username = req.session.loggedUser.username
@@ -79,6 +78,18 @@ router.post("/review/delete/:id", isLoggedIn, async (req, res, next) => {
             return
         }
         const deletedReview = await Review.findByIdAndRemove(idReview);
+        const updatedUSer = await User.findByIdAndUpdate(req.session.loggedUser._id, { $pull: { reviews: { $in: idReview }}}, { new: true })
+        const updatedBook = await Book.findByIdAndUpdate(review.idBook, { $pull: { reviews: { $in: idReview }}}, { new: true })
+        console.log(updatedBook)
+        console.log(updatedBook.reviews.length)
+        if(updatedBook.reviews.length === 0){
+            const deletedBook = await Book.findByIdAndDelete(review.idBook)
+            console.log("borrado", deletedBook)
+        } else {
+            //Calculate rating => newRating = (oldRating * nreviews - value) / (nReviews - 1)
+            const newRating = (updatedBook.rating * (updatedBook.reviews.length + 1) - review.rating) / (updatedBook.reviews.length)
+            const updatedRateBook = await Book.findByIdAndUpdate(review.idBook, { rating: newRating}, { new: true })
+        }
         res.redirect("/profile")
     } catch(err) {
         res.render("not-found.hbs", { errorMsg: "Review not deleted" });
