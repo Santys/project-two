@@ -5,14 +5,17 @@
     <form action="/books/search" method="GET">
         <div class="form-group row">
             <div class="col-10">
-                <input class="form-control form-control" type="text" name="title" id="title"/>
+                <input class="form-control form-control" type="text" name="title" id="title" placeholder="Search a title..."/>
             </div>
             <button id="search-button" class="btn light-blue text-light col-2" type="submit">SEARCH</button>
         </div>
     </form>
 </div>
 
-<div class="row">
+<div class="row mt-3">
+    <div class="col-md-12 border-bottom text-light">
+        <p class="h2">Most rated books</p>
+    </div>
     {{#each bestBooks}}
         <div class="col-md-3 ">
             <div class="card book-container light-white">
