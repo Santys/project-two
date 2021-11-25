@@ -38,14 +38,14 @@
         <div class="modal-body">
             <form id="myForm1" method="POST" action="review/{{bookInfo.id}}">
                 <label>Review</label>
-                <input type="text" name="review" />
+                <input class="form-control" type="text" name="review" />
                 <label>Rate</label>
-                <input type="number" name="rating" />
+                <input class="form-control" type="number" name="rating" />
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button form="myForm1" type="submit" class="btn btn-primary">Submit review</button>          
+            <button type="button" class="btn grey" data-dismiss="modal">Close</button>
+            <button form="myForm1" type="submit" class="btn light-blue text-light">Submit review</button>          
         </div>
         </div>
     </div>
