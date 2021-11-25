@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
     const user = req.session.loggedUser
     const bestBooks = await Book.find()
     .sort({rating: -1})
-    .limit(10)
+    .limit(12)
 
     res.render("index", { bestBooks, user });
   } catch(err){
