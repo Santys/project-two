@@ -1,4 +1,30 @@
-<h2>{{bookInfo.volumeInfo.title}}</h2>
+<div class="col-md-12">
+    <div class="card review-container light-white">
+        <div class="card-body img-body col-md-3">
+            <img class="card-img-top border" src="{{bookInfo.volumeInfo.imageLinks.thumbnail}}" alt="{{bookInfo.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+        </div>
+        <div class="card-body col-md-9 row">
+            <div>
+                <p class="h4 card-title">
+                    {{bookInfo.volumeInfo.title}}
+                </p>
+                {{#each bookInfo.volumeInfo.authors}}
+                    <p class="h6 card-title">
+                        {{this}}
+                    </p>
+                {{/each}}
+            </div>
+            <p>{{{bookInfo.volumeInfo.description}}}</p>      
+            <button type="button" class="btn grey btn-review" data-toggle="modal" data-target="#{{bookInfo.id}}">
+                    Review
+            </button>
+        </div>
+            
+    </div>
+</div>
+
+
+{{!-- <h2>{{bookInfo.volumeInfo.title}}</h2>
 
 <img class="card-img-top" src="{{bookInfo.volumeInfo.imageLinks.thumbnail}}" alt="{{bookInfo.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
 
@@ -11,20 +37,31 @@
 <p>{{{bookInfo.volumeInfo.description}}}</p>
 
 {{!-- {{#isReviewed }} --}}
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{bookInfo.id}}">
+{{!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{bookInfo.id}}">
         Review
-</button>
+</button> --}} 
 
-<ul>
-    {{#each bookInDB.reviews}}
-        <li>    
-            {{this.owner}}
-            <ul>
-                <li>{{this.comment}} Rating: {{this.rating}}</li>
-            </ul>
-        </li>
-    {{/each}}
-</ul>
+<div class="card review-container row gx-0 light-white">
+    <span class="h3 gx-5">This is what users say about this book:</span>
+</div>
+
+
+
+{{#each bookInDB.reviews}}
+    <div class="col-md-12">
+        <div class="card review-container light-white">
+            <div class="card-body row">
+                <div>
+                    <p class="h4 card-title">
+                        {{this.owner}}
+                    </p>
+                    <p class="h6">{{this.comment}}</p>
+                </div>
+                <p class="h5">Rating: {{this.rating}}</p>       
+            </div>
+        </div>
+    </div>
+{{/each}}
 
 
 
