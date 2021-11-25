@@ -1,21 +1,30 @@
-<form action="/books/search" method="GET">
-        <input type="text" name="title" id="title" value="{{search}}"/>
-        <button id="search-button" class="btn btn-success" type="submit">SEARCH</button>
-</form>
+
+
+<div class="input-field py-2">
+    <form action="/books/search" method="GET">
+        <div class="form-group row">
+            <div class="col-10">
+                <input class="form-control form-control" type="text" name="title" id="title" value="{{search}}"/>
+            </div>
+            <button id="search-button" class="btn light-blue text-light col-2" type="submit">SEARCH</button>
+        </div>
+    </form>
+</div>
+
 <div class="row">
-    <p>Results for "{{search}}"</p>
+    <p class="h4 text-light">Results for "{{search}}"</p>
     {{#each booksInfo}}
         <div class="col-md-3">
-            <div class="card book-container">
+            <div class="card book-container light-white">
                 <div class="card-body img-body">
                     <img class="card-img-top border" src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="{{this.volumeInfo.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
                 </div>
-                <div class="card-body">
+                <div class="card-body row">
                     <h5 class="card-title">
                         {{this.volumeInfo.title}}
                     </h5>
                     <p>{{this.volumeInfo.authors.[0]}}</p>
-                    <a class="btn btn-success active text-light" href="/books/{{this.id}}">
+                    <a class="btn light-blue active text-light" href="/books/{{this.id}}">
                         View book
                     </a>
                 </div>
