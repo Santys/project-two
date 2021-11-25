@@ -9,20 +9,21 @@
 {{#each reviews}}
     <div class="col-md-12">
             <div class="card review-container">
-                <div class="card-body img-body">
-                    <img class="card-img-top" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
+                <div class="card-body img-body col-md-3">
+                    <img class="card-img-top border" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{this.idBook.title}}
-                    </h5>
-                    <p>{{this.idBook.author.[0]}}</p>
+                <div class="card-body col-md-6 row">
                     <div>
-                        <p>{{this.comment}}</p> 
-                        <p>Your rate: {{this.rating}}</p>       
+                        <p class="h4 card-title">
+                            {{this.idBook.title}}
+                        </p>
+                        <p class="h6">{{this.idBook.author.[0]}}</p>
+
                     </div>
+                    <p>{{this.comment}}</p> 
+                    <p class="h5">Your rate: {{this.rating}}</p>       
                 </div>
-                <div class="card-body btn-center-review">
+                <div class="card-body btn-center-review col-md-3">
                     <a class="btn light-blue active text-light btn-review" href="/books/{{this.idBook.idApi}}">
                         View book
                     </a>
