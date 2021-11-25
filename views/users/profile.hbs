@@ -1,4 +1,4 @@
-<div class="card review-container row gx-0">
+<div class="card review-container row gx-0 light-white">
     <p class="h1 gx-5">Welcome to your profile {{username}}!</p>
     <span class="h2 gx-5">Your reviews are below:</span>
 </div>
@@ -8,7 +8,7 @@
 
 {{#each reviews}}
     <div class="col-md-12">
-            <div class="card review-container">
+            <div class="card review-container light-white">
                 <div class="card-body img-body col-md-3">
                     <img class="card-img-top border" src="{{this.idBook.cover}}" alt="{{this.idBook.title}}" onerror="this.src='../images/default_book_cover.jpg';"/>
                 </div>
