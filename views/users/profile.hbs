@@ -19,13 +19,13 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-success active text-light" href="/books/{{this.idBook.idApi}}">
+                    <a class="btn light-blue active text-light" href="/books/{{this.idBook.idApi}}">
                         View book
                     </a>
                     <form action="/books/review/delete/{{this._id}}" method="POST">
-                        <button type="submit">Delete Review</button>
+                        <button class="btn grey" type="submit">Delete Review</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#{{this._id}}">
+                    <button type="button" class="btn grey" data-toggle="modal" data-target="#{{this._id}}">
                         Edit Review
                     </button>
                     <!-- Modal -->

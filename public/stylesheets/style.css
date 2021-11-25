@@ -1,15 +1,25 @@
 body {
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #2C5E9E;
 }
 
 a {
   color: #00B7FF;
 }
 
+.grey{
+  background-color: #D7DDE2
+}
+
+.light-blue{
+  background-color: #5995DD;
+}
+
 .navbar{
   padding-left: 10vw;
   margin-bottom: 1vh;
+  background-color: #D7DDE2;
 }
 .card{
   padding: 1vw;
