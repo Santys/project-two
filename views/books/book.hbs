@@ -74,10 +74,14 @@
         </div>
         <div class="modal-body">
             <form id="myForm1" method="POST" action="review/{{bookInfo.id}}">
-                <label>Review</label>
-                <input class="form-control" type="text" name="review" />
-                <label>Rate</label>
-                <input class="form-control" type="number" name="rating" />
+                <div class="form-group mb-3">
+                    <label class="form-label">Review</label>
+                    <textarea rows="5" class="form-control" type="text" name="review"></textarea> 
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label">Rate</label>
+                    <input class="form-control" type="number" name="rating" min="0" max="10" required/>
+                </div>
             </form>
         </div>
         <div class="modal-footer">
