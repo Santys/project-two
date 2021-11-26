@@ -7,7 +7,7 @@
                         <h1>Login</h1>
                     </div>
             </div>
-            <form action="/login" method="POST">
+            <form id="login" class="mb-2" action="/login" method="POST">
                 <div class="form-group mb-3">
                     <label class="form-label">Username:</label>
                     <input class="form-control" type="text" name="username" placeholder="Enter Username" required/>
@@ -16,17 +16,27 @@
                     <label class="form-label">Password:</label>
                     <input class="form-control" type="password" name="password" placeholder="Enter Password" required/>
                 </div>
-                <div class="form-group">
-                    <p class="text-center">(Try username: emperorpenguin password: 12345)</p>
-                </div>
-                <div class="col-md-12 text-center mb-3">
-                    <button class="btn light-blue active text-light" type="submit">Log In</button>
+                <div class="col-md-12 text-center">
+                    <button form="login" class="col-11 btn light-blue active text-light" type="submit">Log In</button>
                     {{!-- <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button> --}}
                 </div>
-                <div class="form-group">
-                    <p class="text-center">Don't an have account? <a href="/signup" id="signup">Sign up here</a></p>
-                </div>
             </form>
+            <div class="col-md-12 mb-2">
+                    <div class="login-or">
+                        <hr class="hr-or">
+                        <span class="span-or">or</span>
+                    </div>
+            </div>
+            <div class="col-md-12 mb-3 text-center mb-4">
+                <form id="demo" action="/login" method="POST">
+                    <input class="form-control" type="hidden" name="username" value="booksEnjoyer"/>
+                    <input class="form-control" type="hidden" name="password" value="12345">
+                    <button form="demo" class="col-11 btn light-blue active text-light" type="submit">Try demo</button>
+                </form>
+            </div>
+            <div class="form-group">
+                <p class="text-center mb-0">Don't an have account? <a href="/signup" id="signup">Sign up here</a></p>
+            </div>
         </div>
     </div>
 </div>
