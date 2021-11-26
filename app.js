@@ -25,7 +25,7 @@ require('./config/session.config')(app);
 const projectName = 'project-two';
 const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
+app.locals.title = "MyBookApp";
 
 // HBS helpers
 hbs.registerHelper('isReviewed', function(id, array, options) {
